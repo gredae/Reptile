@@ -2,7 +2,16 @@ import requests
 import os
 import re
 
+def mkdir_path(path):
+    #获取绝对路径
+    path = os.path.abspath(path)
+    if not os.path.exists(path):
+        mkdir_path(os.path.dirname(path))
+        os.mkdir(path)
+
 PC_BILIFJ_VIDEO_PATH = r'E:\爬虫数据\哔哩哔哩\番剧'
+
+mkdir_path(PC_BILIFJ_VIDEO_PATH)
 
 ep = input('请输入番剧的ep号，暂不可爬取大会员番剧：').strip()
 # B站的番剧是flv格式
